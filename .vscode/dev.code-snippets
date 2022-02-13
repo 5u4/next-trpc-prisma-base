@@ -1,0 +1,34 @@
+{
+  "Use i18next translation hook": {
+    "prefix": "uset",
+    "body": [
+      "const { t } = useTranslation(\"$1\");",
+      "",
+      "import type { GetStaticProps } from \"next\";",
+      "import { useTranslation } from \"next-i18next\";",
+      "import { serverSideTranslations } from \"next-i18next/serverSideTranslations\";",
+      "export const getStaticProps: GetStaticProps = async ({ locale, defaultLocale }) => {",
+      "  return {",
+      "    props: {",
+      "      ...(await serverSideTranslations(locale ?? defaultLocale!, [\"$1\"])),",
+      "    },",
+      "  };",
+      "};"
+    ],
+    "description": "Use i18next translation hook"
+  },
+  "Create a new next page": {
+    "prefix": "newpage",
+    "body": [
+      "import { NextPage } from \"next\";",
+      "",
+      "const ${TM_FILENAME_BASE/(.)/${1:/upcase}/}: NextPage = () => {",
+      "  return <>$1</>;",
+      "};",
+      "",
+      "export default ${TM_FILENAME_BASE/(.)/${1:/upcase}/};",
+      ""
+    ],
+    "description": "Create a new next page"
+  }
+}
