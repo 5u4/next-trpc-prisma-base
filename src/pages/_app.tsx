@@ -7,6 +7,7 @@ import { AppType } from "next/dist/shared/lib/utils";
 import Head from "next/head";
 import superjson from "superjson";
 import type { AppRouter } from "~/server/routers/_app";
+import { getBaseUrl } from "~/utils/get-base-url";
 
 const App: AppType = ({ Component, pageProps }) => {
   return (
@@ -52,9 +53,7 @@ export default withTRPC<AppRouter>({
             (process.env.NODE_ENV === "development" && process.browser) ||
             (opts.direction === "down" && opts.result instanceof Error),
         }),
-        httpBatchLink({
-          url: `${process.env.APP_URL}/api/trpc`,
-        }),
+        httpBatchLink({ url: `${getBaseUrl()}/api/trpc` }),
       ],
 
       /**
